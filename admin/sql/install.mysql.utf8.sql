@@ -1,18 +1,18 @@
 CREATE TABLE IF NOT EXISTS `#__jem_events` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `locid` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `locid` INT UNSIGNED NOT NULL DEFAULT '0',
   `dates` date NULL DEFAULT NULL,
   `enddates` date NULL DEFAULT NULL,
   `times` time NULL DEFAULT NULL,
   `endtimes` time NULL DEFAULT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) NOT NULL DEFAULT '',
-  `created_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `created_by` INT UNSIGNED NOT NULL DEFAULT '0',
   `modified` datetime NULL DEFAULT NULL,
-  `modified_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `modified_by` INT UNSIGNED NOT NULL DEFAULT '0',
   `publish_up` datetime DEFAULT NULL,
   `publish_down` datetime DEFAULT NULL,
-  `version` int(11) unsigned NOT NULL DEFAULT '0',
+  `version` INT UNSIGNED NOT NULL DEFAULT '0',
   `author_ip` varchar(39) DEFAULT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `introtext` mediumtext NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `#__jem_events` (
   `requestanswer` tinyint(1) NOT NULL DEFAULT '0',
   `seriesbooking` int(1) NOT NULL DEFAULT '0',
   `singlebooking` int(1) NOT NULL DEFAULT '0',
-  `hits` int(11) unsigned NOT NULL DEFAULT '0',
+  `hits` INT UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `contactid` int(10) NOT NULL DEFAULT '0',
   `custom1` varchar(200) NOT NULL DEFAULT '',
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `#__jem_events` (
 ) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
 
 CREATE TABLE IF NOT EXISTS `#__jem_venues` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `venue` varchar(100) NOT NULL DEFAULT '',
   `alias` varchar(100) NOT NULL DEFAULT '',
   `color` varchar(7) NOT NULL DEFAULT '',
@@ -90,12 +90,12 @@ CREATE TABLE IF NOT EXISTS `#__jem_venues` (
   `meta_description` text DEFAULT NULL,
   `locimage` varchar(100) NOT NULL DEFAULT '',
   `map` tinyint(4) NOT NULL DEFAULT '0',
-  `created_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `created_by` INT UNSIGNED NOT NULL DEFAULT '0',
   `author_ip` varchar(39) NOT NULL DEFAULT '',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NULL DEFAULT NULL,
-  `modified_by` int(11) unsigned NOT NULL DEFAULT '0',
-  `version` int(11) unsigned NOT NULL DEFAULT '0',
+  `modified_by` INT UNSIGNED NOT NULL DEFAULT '0',
+  `version` INT UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `checked_out` int(11) UNSIGNED NULL DEFAULT NULL,
   `checked_out_time` datetime NULL DEFAULT NULL,
@@ -121,11 +121,11 @@ CREATE TABLE IF NOT EXISTS `#__jem_venues` (
   KEY `idx_pubstate` (`published`),
   KEY `idx_createdby` (`created_by`),
   KEY `idx_language` (`language`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_categories` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `parent_id` INT UNSIGNED NOT NULL DEFAULT '0',
   `catname` varchar(100) NOT NULL DEFAULT '',
   `alias` varchar(100) NOT NULL DEFAULT '',
   `description` mediumtext DEFAULT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `#__jem_categories` (
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `checked_out` int(11) UNSIGNED NULL DEFAULT NULL,
   `checked_out_time` datetime NULL DEFAULT NULL,
-  `access` int(11) unsigned NOT NULL DEFAULT '0',
+  `access` INT UNSIGNED NOT NULL DEFAULT '0',
   `groupid` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
@@ -154,10 +154,10 @@ CREATE TABLE IF NOT EXISTS `#__jem_categories` (
   `email` varchar(200) DEFAULT NULL,
   `emailacljl` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_cats_event_relations` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `catid` int(11) NOT NULL DEFAULT '0',
   `itemid` int(11) NOT NULL DEFAULT '0',
   `ordering` tinyint(11) NOT NULL DEFAULT '0',
@@ -165,10 +165,10 @@ CREATE TABLE IF NOT EXISTS `#__jem_cats_event_relations` (
   UNIQUE KEY `category event relation` (`catid`,`itemid`),
   KEY `catid` (`catid`),
   KEY `itemid` (`itemid`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_register` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `event` int(11) NOT NULL DEFAULT '0',
   `uid` int(11) NOT NULL DEFAULT '0',
   `places` int(11) NOT NULL DEFAULT '1',
@@ -182,10 +182,10 @@ CREATE TABLE IF NOT EXISTS `#__jem_register` (
   KEY `idx_event` (`event`),
   KEY `idx_event_status` (`event`,`status`),
   KEY `idx_user` (`uid`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_groups` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL DEFAULT '',
   `description` mediumtext DEFAULT NULL,
   `checked_out` int(11) UNSIGNED NULL DEFAULT NULL,
@@ -197,16 +197,16 @@ CREATE TABLE IF NOT EXISTS `#__jem_groups` (
   `publishevent` int(11) NOT NULL,
   `editevent` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_groupmembers` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL DEFAULT '0',
   `member` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `idx_group` (`group_id`),
   KEY `idx_user` (`member`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_config` (
   `keyname` varchar(100) NOT NULL,
@@ -214,33 +214,33 @@ CREATE TABLE IF NOT EXISTS `#__jem_config` (
   `access` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'rfu',
   PRIMARY KEY (`keyname`),
   KEY `idx_access` (`access`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_attachments` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `object` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT NULL,
-  `frontend` tinyint(1) NOT NULL DEFAULT '1',
-  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `ordering` int(11) NOT NULL DEFAULT '0',
-  `added` datetime NULL DEFAULT NULL,
-  `added_by` int(11) NOT NULL DEFAULT '0',
+  `frontend` TINYINT(1) NOT NULL DEFAULT 1,
+  `access` INT UNSIGNED NOT NULL DEFAULT 0,
+  `ordering` INT NOT NULL DEFAULT 0,
+  `added` DATETIME DEFAULT NULL,
+  `added_by` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `#__jem_countries` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `continent` varchar(2) NOT NULL,
   `iso2` varchar(2) NOT NULL,
   `iso3` varchar(3) NOT NULL,
-  `un` int(11) NOT NULL,
+  `un` INT NOT NULL,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `iso2` (`iso2`)
-) ENGINE=MyISAM CHARACTER SET `utf8mb4` COLLATE `utf8mb4_unicode_ci`;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT IGNORE INTO `#__jem_config` (`keyname`, `value`) VALUES
 ('oldevent', '2'),
@@ -379,11 +379,11 @@ INSERT IGNORE INTO `#__jem_countries` (`id`, `continent`, `iso2`, `iso3`, `un`, 
 (48, 'AS', 'CC', 'CCK', 166, 'Cocos (Keeling) Islands'),
 (49, 'SA', 'CO', 'COL', 170, 'Colombia'),
 (50, 'AF', 'KM', 'COM', 174, 'Comoros (the)'),
-(51, 'AF', 'CD', 'COD', 180, 'Congo (the Democratic Republic'),
+(51, 'AF', 'CD', 'COD', 180, 'Congo (the Democratic Republic of)'),
 (52, 'AF', 'CG', 'COG', 178, 'Congo'),
 (53, 'OC', 'CK', 'COK', 184, 'Cook Islands '),
 (54, 'NA', 'CR', 'CRI', 188, 'Costa Rica'),
-(55, 'AF', 'CI', 'CIV', 384, 'Cote d''Ivoire (Ivory Coast), Republic of'),
+(55, 'AF', 'CI', 'CIV', 384, 'Cote d\'Ivoire (Ivory Coast), Republic of'),
 (56, 'EU', 'HR', 'HRV', 191, 'Croatia'),
 (57, 'NA', 'CU', 'CUB', 192, 'Cuba'),
 (58, 'AS', 'CY', 'CYP', 196, 'Cyprus'),
@@ -424,7 +424,7 @@ INSERT IGNORE INTO `#__jem_countries` (`id`, `continent`, `iso2`, `iso3`, `un`, 
 (93, 'AF', 'GW', 'GNB', 624, 'Guinea-Bissau'),
 (94, 'SA', 'GY', 'GUY', 328, 'Guyana'),
 (95, 'NA', 'HT', 'HTI', 332, 'Haiti'),
-(96, 'AN', 'HM', 'HMD', 334, 'Heard Island and McDonald Isla'),
+(96, 'AN', 'HM', 'HMD', 334, 'Heard Island and McDonald Islands'),
 (97, 'EU', 'VA', 'VAT', 336, 'Vatican City'),
 (98, 'NA', 'HN', 'HND', 340, 'Honduras'),
 (99, 'AS', 'HK', 'HKG', 344, 'Hong Kong'),
@@ -578,9 +578,8 @@ INSERT IGNORE INTO `#__jem_countries` (`id`, `continent`, `iso2`, `iso3`, `un`, 
 (248, 'NA', 'CW', 'CUW', 531, 'Curacao'),
 (249, 'NA', 'SX', 'SXM', 534, 'Sint Maarten'),
 (250, 'AF', 'SS', 'SSD', 728, 'South Sudan'),
-(251, 'EU', 'XK', 'XKX', '688', 'Kosovo');
+(251, 'EU', 'XK', 'XKX', 688, 'Kosovo');
 
 INSERT IGNORE INTO `#__jem_categories` (`id`, `parent_id`, `lft`, `rgt`, `level`, `catname`, `alias`, `access`, `published`, `created_time`, `path` ) VALUES
 (1, 0, 0, 3, 0, 'root', 'root', 1, 1, now(), null),
 (2, 1, 1, 2, 0, 'Uncategorised', 'uncategorised', 1, 1, now(), 'uncategorised');
-
