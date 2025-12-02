@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml/" lang="en-GB" xml:lang="en-GB">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title><span>21</span>Module Template Overrides</title>
+        <link href="../css/help.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Module Template Overrides</h1>
+        <h2>1. Identify the module layout you want to override</h2>
+        <p>
+            Each JEM module has its layout files in:
+            <code>/modules/mod_jem_xxx/tmpl/</code>
+            For example: <code>default.php</code>, <code>table.php</code>, etc.
+        </p>
+        <h2>2. Create the override via Joomla backend (recommended)</h2>
+        <ol>
+            <li>Open Joomla administrator.</li>
+            <li>Go to <strong>System → <a href="/administrator/index.php?option=com_templates&view=templates" target="_blank">Site Templates</a></strong>.</li>
+            <li>Select your active site template.</li>
+            <li>Open the <strong>Create Overrides</strong> tab.</li>
+            <li>
+                Under <strong>Modules</strong>, select the JEM module (e.g. <code>mod_jem_teaser</code>). Joomla will
+                automatically copy the layout files into your template folder:
+                <code>/templates/YOUR_TEMPLATE/html/mod_jem_teaser/</code>
+            </li>
+        </ol>
+        <h2>3. Create the override manually (alternative)</h2>
+        <p>
+            Copy the layout file from:
+            <code>/modules/mod_jem_teaser/tmpl/default.php</code>
+            to:
+            <code>/templates/YOUR_TEMPLATE/html/mod_jem_teaser/default.php</code>
+        </p>
+        <h2>4. Edit the override</h2>
+        <p>
+            Open the copied file inside your template folder and modify it as needed. Joomla will use this file instead
+            of the module’s original layout.
+        </p>
+        <h2>5. Optional: CSS override</h2>
+        <p>
+            If the module loads its own CSS, you can override it by placing a CSS file in your template, for example:
+            <code>/templates/YOUR_TEMPLATE/css/mod_jem_teaser.css</code>.
+        </p>
+        <h2>6. After updates</h2>
+        <p>
+            When JEM or the module is updated, compare new module layout files with your overrides and adjust if
+            required.
+        </p>
+    </body>
+</html>
