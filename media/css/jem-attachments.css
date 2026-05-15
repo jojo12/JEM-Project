@@ -1,0 +1,381 @@
+/**
+ * JEM attachment edit layout.
+ */
+
+.jem-attachments-tab {
+    max-width: 100%;
+    container-type: inline-size;
+}
+
+.jem-attachments-tab fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.jem-attachments-tab legend {
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: 1.35rem;
+    font-weight: 500;
+}
+
+.jem-attachments-tab .adminform {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.jem-attachments-tab .adminform thead {
+    display: none;
+}
+
+.jem-attachments-tab .adminform tbody {
+    display: block;
+}
+
+.jem-attachments-tab .adminform tr {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem);
+    gap: .75rem 1rem;
+    width: calc(100% - 3.5rem);
+    max-width: calc(100% - 3.5rem);
+    box-sizing: border-box;
+    margin: 0 3.5rem 1.25rem 0;
+    padding: .85rem 1rem;
+    border: 1px solid #d7dce1;
+    border-radius: .5rem;
+    background: #fff;
+}
+
+.jem-attachments-tab .jem-attachment-template-row {
+    display: none !important;
+}
+
+.jem-attachments-tab .jem-attachments-toolbar {
+    margin: 0 0 1rem;
+}
+
+.jem-attachments-tab .jem-attachments-global-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 0 1rem;
+    padding: .75rem 1rem;
+    border: 1px solid #d7dce1;
+    border-radius: .5rem;
+    background: #fff;
+}
+
+.jem-attachments-tab .jem-attachments-global-options .control-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+}
+
+.jem-attachments-tab .jem-attachments-global-options .control-label {
+    margin: 0;
+    font-weight: 600;
+}
+
+.jem-attachments-tab .jem-attachments-global-options .controls {
+    margin: 0;
+}
+
+.jem-attachments-tab .adminform tr > td {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    vertical-align: top;
+}
+
+.jem-attachments-tab .adminform tr > td:first-child {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem 1rem;
+}
+
+.jem-attachments-tab .adminform tr > td:first-child > div,
+.jem-attachments-tab .adminform tr > td > dl.jem-dl {
+    min-width: 0;
+}
+
+.jem-attachments-tab .adminform tr > td.center,
+.jem-attachments-tab .adminform tr > td:last-child {
+    align-self: start;
+}
+
+.jem-attachments-tab .adminform tr > td.jem-attachment-actions,
+.jem-attachments-tab .adminform tr > td.center:has(.attach-remove),
+.jem-attachments-tab .adminform tr > td:last-child:has(.attach-remove) {
+    position: absolute;
+    top: .45rem;
+    right: -3rem;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    width: 2.5rem !important;
+    min-width: 2.5rem;
+    max-width: 2.5rem;
+    justify-content: center;
+}
+
+.jem-attachments-tab .title,
+.jem-attachments-tab dt {
+    display: flex;
+    align-items: center;
+    min-height: 1.7rem;
+    margin: 0 0 .25rem;
+    padding: 0;
+    font-weight: 600;
+    line-height: 1.15;
+    color: #1d2733;
+}
+
+.jem-attachments-tab dd {
+    margin: 0 0 .65rem;
+}
+
+.jem-attachments-tab input,
+.jem-attachments-tab select,
+.jem-attachments-tab .form-control,
+.jem-attachments-tab .form-select,
+.jem-attachments-tab .inputbox {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+}
+
+.jem-attachments-tab input[type="text"],
+.jem-attachments-tab input[type="file"],
+.jem-attachments-tab select,
+.jem-attachments-tab .form-control,
+.jem-attachments-tab .form-select,
+.jem-attachments-tab .inputbox {
+    width: 100% !important;
+}
+
+.jem-attachments-tab input[type="file"] {
+    min-height: 2.35rem;
+    padding: .35rem .5rem;
+    border: 1px solid #b8c8e3;
+    border-radius: .25rem;
+    background: #fff;
+}
+
+.jem-attachments-tab input[type="reset"],
+.jem-attachments-tab .clear-attach-field {
+    margin-top: .4rem;
+}
+
+.jem-attachments-tab .attach-remove,
+.jem-attachments-tab .attachment-move-up,
+.jem-attachments-tab .attachment-move-down,
+.jem-attachments-tab .attachment-remove-row,
+.jem-attachments-tab img.attach-remove,
+.jem-attachments-tab a.attach-remove,
+.jem-attachments-tab button.attach-remove {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.35rem !important;
+    min-width: 2.35rem !important;
+    max-width: 2.35rem !important;
+    height: 2.35rem !important;
+    min-height: 2.35rem !important;
+    max-height: 2.35rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: .25rem !important;
+    cursor: pointer;
+}
+
+.jem-attachments-tab .attachment-move-up,
+.jem-attachments-tab .attachment-move-down {
+    background: #35629a;
+    border-color: #35629a;
+    color: #fff;
+}
+
+.jem-attachments-tab .attach-remove,
+.jem-attachments-tab .attachment-remove-row {
+    background: #c52b2b;
+    border-color: #c52b2b;
+    color: #fff;
+}
+
+.jem-attachments-tab img.attach-remove {
+    padding: .45rem !important;
+    border: 1px solid #c52b2b;
+    background: #c52b2b;
+    object-fit: contain;
+}
+
+.jem-attachments-tab .alert {
+    margin: 0 0 1rem;
+}
+
+@container (max-width: 900px) {
+    .jem-attachments-tab .adminform tr {
+        grid-template-columns: 1fr;
+    }
+
+    .jem-attachments-tab .adminform tr > td:first-child {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+@container (max-width: 620px) {
+    .jem-attachments-tab .adminform tr {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .jem-attachments-tab .adminform tr > td:first-child {
+        grid-template-columns: 1fr;
+    }
+
+    .jem-attachments-tab .adminform tr > td.jem-attachment-actions,
+    .jem-attachments-tab .adminform tr > td.center:has(.attach-remove),
+    .jem-attachments-tab .adminform tr > td:last-child:has(.attach-remove) {
+        position: static;
+        flex-direction: row;
+        width: auto !important;
+        max-width: none;
+        justify-content: flex-start;
+    }
+}
+
+/* Frontend legacy CSS contains ID selectors for table#el-attachments; keep this block last. */
+.jem-attachments-tab #el-attachments {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.jem-attachments-tab #el-attachments tbody {
+    display: block !important;
+    width: 100% !important;
+}
+
+.jem-attachments-tab #el-attachments tr {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem) !important;
+    gap: .75rem 1rem !important;
+    width: calc(100% - 3.5rem) !important;
+    max-width: calc(100% - 3.5rem) !important;
+    box-sizing: border-box !important;
+    margin: 0 3.5rem 1.25rem 0 !important;
+    padding: .85rem 1rem !important;
+    border: 1px solid #d7dce1 !important;
+    border-radius: .5rem !important;
+    background: #fff !important;
+}
+
+.jem-attachments-tab #el-attachments tr > td {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    vertical-align: top !important;
+}
+
+.jem-attachments-tab #el-attachments tr > td:first-child {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: .75rem 1rem !important;
+}
+
+.jem-attachments-tab #el-attachments tr > td.jem-attachment-actions {
+    position: absolute !important;
+    top: .45rem !important;
+    right: -3rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: .35rem !important;
+    width: 2.5rem !important;
+    min-width: 2.5rem !important;
+    max-width: 2.5rem !important;
+    justify-content: center !important;
+}
+
+.jem-attachments-tab #el-attachments input[type="text"],
+.jem-attachments-tab #el-attachments input[type="file"],
+.jem-attachments-tab #el-attachments select,
+.jem-attachments-tab #el-attachments .form-control,
+.jem-attachments-tab #el-attachments .form-select,
+.jem-attachments-tab #el-attachments .inputbox {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.jem-attachments-tab .jem-attachments-global-options fieldset {
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.jem-attachments-tab .jem-attachments-global-options legend {
+    display: none !important;
+}
+
+@container (max-width: 900px) {
+    .jem-attachments-tab #el-attachments tr {
+        grid-template-columns: 1fr !important;
+    }
+
+    .jem-attachments-tab #el-attachments tr > td:first-child {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    }
+}
+
+@container (max-width: 620px) {
+    .jem-attachments-tab #el-attachments tr {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+    .jem-attachments-tab #el-attachments tr > td:first-child {
+        grid-template-columns: 1fr !important;
+    }
+
+    .jem-attachments-tab #el-attachments tr > td.jem-attachment-actions {
+        position: static !important;
+        flex-direction: row !important;
+        width: auto !important;
+        max-width: none !important;
+        justify-content: flex-start !important;
+    }
+}
+
+/* Keep the disabled upload template hidden until the add button clones it. */
+.jem-attachments-tab #el-attachments tr.jem-attachment-template-row,
+#jem .jem-attachments-tab #el-attachments tr.jem-attachment-template-row,
+.jem-attachments-tab #el-attachments .jem-attachment-template-row,
+#jem .jem-attachments-tab #el-attachments .jem-attachment-template-row {
+    display: none !important;
+}

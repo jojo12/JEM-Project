@@ -290,34 +290,31 @@ if ($params->get('access-view')) { /* This will show nothings otherwise - ??? */
 
                         $linksOrder = $params->get('links_order', 'image_icon_text');
 
-                        $allowedOrders = [
-                            'image_icon_text',
-                            'icon_text_image',
-                            'icon_image_text',
+                        $linksOrderMap = [
+                            'image_icon_text' => ['image', 'icon', 'text'],
+                            'image_text_icon' => ['image', 'text', 'icon'],
+                            'icon_text_image' => ['icon', 'text', 'image'],
+                            'icon_image_text' => ['icon', 'image', 'text'],
+                            'text_image_icon' => ['text', 'image', 'icon'],
+                            'text_icon_image' => ['text', 'icon', 'image'],
                         ];
 
-                        if (!in_array($linksOrder, $allowedOrders, true)) {
+                        if (!isset($linksOrderMap[$linksOrder])) {
                             $linksOrder = 'image_icon_text';
                         }
 
                         $orderClass = 'jem-links-order-' . str_replace('_', '-', $linksOrder);
                         ?>
 
-
                         <div class="jem-event-links jem-event-links-<?php echo $this->escape($linksLayout); ?> <?php echo $this->escape($orderClass); ?>">
                             <?php foreach ($this->event_links as $link) : ?>
                                 <?php
                                 // Read link values safely.
                                 $url = !empty($link->url) ? trim((string) $link->url) : '';
-
-                                if ($url === '') {
-                                    continue;
-                                }
-
                                 $type      = !empty($link->type) ? trim((string) $link->type) : 'info';
                                 $target    = !empty($link->target) ? trim((string) $link->target) : '_blank';
                                 $label     = !empty($link->title) ? trim((string) $link->title) : '';
-                            	$description = !empty($link->description) ? trim((string) $link->description) : '';
+                                $description = !empty($link->description) ? trim((string) $link->description) : '';
                                 $image     = !empty($link->image) ? trim((string) $link->image) : '';
                                 $icon      = !empty($link->icon) ? trim((string) $link->icon) : '';
                                 $color     = !empty($link->color) ? trim((string) $link->color) : '';
@@ -325,6 +322,12 @@ if ($params->get('access-view')) { /* This will show nothings otherwise - ??? */
                                 $maxHeight = !empty($link->max_height) ? (int) $link->max_height : 60;
                                 $frameValue = isset($link->frame) ? $link->frame : 0;
                                 $frame = in_array((string) $frameValue, array('1', 'true', 'yes', 'on'), true) ? 1 : 0;
+
+                                if ($url === '' && $label === '' && $description === '' && $image === '' && $icon === '') {
+                                    continue;
+                                }
+
+                                $hasLink = !in_array($url, array('', '#'), true);
 
                                 // Use the default icon from the action type when no explicit icon is stored.
                                 if ($icon === '' && isset($defaultLinkTypes[$type]['icon'])) {
@@ -351,21 +354,29 @@ if ($params->get('access-view')) { /* This will show nothings otherwise - ??? */
                                     $linkClasses[] = 'jem-event-link-has-frame';
                                 }
 
+                                if (!$hasLink) {
+                                    $linkClasses[] = 'jem-event-link-no-link';
+                                }
+
                                 if ($image !== '') {
                                     $linkClasses[] = 'jem-event-link-has-image';
                                 }
 
                                 if ($label !== '') {
                                     $linkClasses[] = 'jem-event-link-has-label';
-	                            }
-	                            if ($description !== '') {
-	                                $linkClasses[] = 'jem-event-link-has-description';
+                                }
+                                if ($description !== '') {
+                                    $linkClasses[] = 'jem-event-link-has-description';
                                 }
 
                                 $linkStyle = array();
 
                                 if ($color !== '' && preg_match('/^#[0-9a-f]{3,8}$/i', $color)) {
-                                    $linkStyle[] = 'color: ' . $color;
+                                    if (!$frame && $hasLink) {
+                                        $linkStyle[] = '--jem-event-link-hover-color: ' . $color;
+                                    } else {
+                                        $linkStyle[] = 'color: ' . $color;
+                                    }
                                 }
 
                                 $linkStyleAttr = !empty($linkStyle) ? ' style="' . implode('; ', $linkStyle) . '"' : '';
@@ -385,45 +396,60 @@ if ($params->get('access-view')) { /* This will show nothings otherwise - ??? */
                                 $imageStyle[] = 'object-fit: contain';
 
                                 $imageStyleAttr = ' style="' . implode('; ', $imageStyle) . '"';
+
+                                $imageOrder = array_search('image', $linksOrderMap[$linksOrder], true) + 1;
+                                $iconOrder  = array_search('icon', $linksOrderMap[$linksOrder], true) + 1;
+                                $textOrder  = array_search('text', $linksOrderMap[$linksOrder], true) + 1;
+
+                                $imageOrderStyle = ' style="order: ' . (int) $imageOrder . ' !important"';
+                                $iconOrderStyle  = ' style="order: ' . (int) $iconOrder . ' !important"';
+                                $textOrderStyle  = ' style="order: ' . (int) $textOrder . ' !important"';
+
+                                $linkParts = array();
+
+                                if ($image !== '') {
+                                    $linkParts['image'] = '<span class="jem-event-link-image"' . $imageOrderStyle . '>'
+                                        . '<img src="' . $this->escape($image) . '" alt="' . $this->escape($label) . '" loading="lazy"' . $imageStyleAttr . '>'
+                                        . '</span>';
+                                }
+
+                                if ($icon !== '') {
+                                    $linkParts['icon'] = '<span class="jem-event-link-icon ' . $this->escape($icon) . '" aria-hidden="true"' . $iconOrderStyle . '></span>';
+                                }
+
+                                if ($label !== '' || $description !== '') {
+                                    $textHtml = '<span class="jem-event-link-text"' . $textOrderStyle . '>';
+
+                                    if ($label !== '') {
+                                        $textHtml .= '<strong class="jem-event-link-label">' . $this->escape($label) . '</strong>';
+                                    }
+
+                                    if ($description !== '') {
+                                        $textHtml .= '<span class="jem-event-link-description">' . nl2br($this->escape($description)) . '</span>';
+                                    }
+
+                                    $textHtml .= '</span>';
+                                    $linkParts['text'] = $textHtml;
+                                }
+
+                                $partOrder = $linksOrderMap[$linksOrder];
+
+                                $tagName = $hasLink ? 'a' : 'span';
                                 ?>
 
-                                <a
+                                <<?php echo $tagName; ?>
                                         class="<?php echo $this->escape(implode(' ', $linkClasses)); ?>"
-                                        href="<?php echo $this->escape($url); ?>"
-                                        target="<?php echo $this->escape($target); ?>"
-                                    <?php echo $rel; ?>
+                                    <?php if ($hasLink) : ?>
+                                            href="<?php echo $this->escape($url); ?>"
+                                            target="<?php echo $this->escape($target); ?>"
+                                        <?php echo $rel; ?>
+                                    <?php endif; ?>
                                     <?php echo $linkStyleAttr; ?>
                                 >
-                                    <?php if ($image !== '') : ?>
-                                        <span class="jem-event-link-image">
-                                            <img
-                                                    src="<?php echo $this->escape($image); ?>"
-                                                    alt="<?php echo $this->escape($label); ?>"
-                                                    loading="lazy"
-                                                <?php echo $imageStyleAttr; ?>
-                                            >
-                                        </span>
-                                    <?php endif; ?>
-
-                                    <?php if ($icon !== '') : ?>
-                                        <span class="jem-event-link-icon <?php echo $this->escape($icon); ?>" aria-hidden="true"></span>
-                                    <?php endif; ?>
-
-                                <?php if ($label !== '' || $description !== '') : ?>
-                                    <span class="jem-event-link-text">
-                                        <?php if ($label !== '') : ?>
-                                            <span class="jem-event-link-label">
-                                                <?php echo $this->escape($label); ?>
-                                            </span>
-                                        <?php endif; ?>
-
-                                        <?php if ($description !== '') : ?>
-                                            <span class="jem-event-link-description">
-                                                <?php echo nl2br($this->escape($description)); ?>
-                                            </span>
-                                        <?php endif; ?>
-                                    </span>
-                                <?php endif; ?>
+                                    <?php foreach ($partOrder as $partName) : ?>
+                                        <?php echo $linkParts[$partName] ?? ''; ?>
+                                    <?php endforeach; ?>
+                            </<?php echo $tagName; ?>>
 
                             <?php endforeach; ?>
                         </div>
