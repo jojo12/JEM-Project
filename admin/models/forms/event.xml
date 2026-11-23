@@ -659,8 +659,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="1">JSHOW</option>
-                <option value="0">JHIDE</option>
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
             </field>
             <field name="event_show_venue_name" type="list"
                 label="COM_JEM_EVENT_FIELD_SHOW_VENUE_NAME_LABEL"
@@ -669,8 +669,8 @@
                 class="inputbox btn-group btn-group-yesno"
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="1">JSHOW</option>
-                <option    value="0">JHIDE</option>
+                <option    value="1">JYES</option>
+                <option    value="0">JNO</option>
             </field>
             <field name="event_show_category" type="list"
                 label="COM_JEM_EVENT_FIELD_SHOW_CATEGORY_LABEL"
@@ -679,8 +679,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="1">JSHOW</option>
-                <option    value="0">JHIDE</option>
+                <option    value="1">JYES</option>
+                <option    value="0">JNO</option>
             </field>
             <field name="event_link_category" type="list"
                 label="COM_JEM_EVENT_FIELD_LINK_CATEGORY_LABEL"
@@ -699,8 +699,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="0">JHIDE</option>
-                <option    value="1">JSHOW</option>
+                <option    value="0">JNO</option>
+                <option    value="1">JYES</option>
             </field>
             <field name="event_link_author" type="list"
                 label="COM_JEM_EVENT_FIELD_LINK_AUTHOR_LABEL"
@@ -718,8 +718,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="0">JHIDE</option>
-                <option    value="1">JSHOW</option>
+                <option    value="0">JNO</option>
+                <option    value="1">JYES</option>
             </field>
             <field name="event_link_contact" type="list"
                 label="COM_JEM_EVENT_FIELD_LINK_CONTACT_LABEL"
@@ -755,8 +755,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="0">JHIDE</option>
-                <option    value="1">JSHOW</option>
+                <option    value="0">JNO</option>
+                <option    value="1">JYES</option>
             </field>
             <field name="event_show_publish_state" type="list"
                 label="COM_JEM_EVENT_FIELD_SHOW_PUBLISH_STATE_LABEL"
@@ -764,8 +764,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="0">JHIDE</option>
-                <option value="1">JSHOW</option>
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
             </field>
             <field name="event_show_availability" type="list"
                 label="COM_JEM_EVENT_FIELD_SHOW_AVAILABILITY_LABEL"
@@ -773,8 +773,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="0">JHIDE</option>
-                <option value="1">JSHOW</option>
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
             </field>
             <field name="event_show_print_icon" type="list"
                 label="JGLOBAL_SHOW_PRINT_ICON_LABEL"
@@ -782,8 +782,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="0">JHIDE</option>
-                <option    value="1">JSHOW</option>
+                <option    value="0">JNO</option>
+                <option    value="1">JYES</option>
             </field>
             <field name="event_show_email_icon" type="list"
                 label="JGLOBAL_SHOW_EMAIL_ICON_LABEL"
@@ -791,8 +791,8 @@
                 default=""
             >
                 <option    value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="0">JHIDE</option>
-                <option    value="1">JSHOW</option>
+                <option    value="0">JNO</option>
+                <option    value="1">JYES</option>
             </field>
             <field name="event_show_ical_icon" type="list"
                 label="COM_JEM_EVENT_FIELD_SHOW_ICAL_ICON"
@@ -800,8 +800,8 @@
                 default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option    value="0">JHIDE</option>
-                <option    value="1">JSHOW</option>
+                <option    value="0">JNO</option>
+                <option    value="1">JYES</option>
             </field>
             <field name="event_show_detailstitle" type="list"
                 label="COM_JEM_DISPLAY_EVENT_TITLE"
@@ -811,8 +811,8 @@
                 required="false"
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="0">JHIDE</option>
-                <option value="1">JSHOW</option>
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
             </field>
         </fieldset>
 
@@ -838,8 +838,8 @@
                 required="false"
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="0">JHIDE</option>
-                <option value="1">JSHOW</option>
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
             </field>
             <field name="event_show_detailsadress" type="list"
                 label="COM_JEM_DISPLAY_ADDRESS"
@@ -849,8 +849,8 @@
                 required="false"
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="0">JHIDE</option>
-                <option value="1">JSHOW</option>
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
             </field>
             <field name="event_show_detlinkvenue" type="list"
                 label="COM_JEM_EVENT_DISPLAY_LINK_TO_VENUE"
@@ -950,8 +950,8 @@
                 required="false"
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="0">JHIDE</option>
-                <option value="1">JSHOW</option>
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
             </field>
         </fieldset>
     </fields>
