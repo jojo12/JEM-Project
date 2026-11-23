@@ -2456,8 +2456,8 @@
                 default="1"
                 required="false"
             >
-                <option value="1">JSHOW</option>
-                <option value="0">JHIDE</option>
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
             </field>
             <field name="event_detail_image_layout" type="list"
                 label="COM_JEM_EVENT_DETAIL_IMAGE_LAYOUT"
