@@ -599,8 +599,8 @@
                     default=""
             >
                 <option value="">JGLOBAL_USE_GLOBAL</option>
-                <option value="1">JSHOW</option>
-                <option value="0">JHIDE</option>
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
             </field>
         </fieldset>
         <fieldset name="article_content_options">
